@@ -221,6 +221,12 @@ return new Symbol(sym.EOF);
   return S;
 }
 
+";" {
+  Symbol S = new Symbol(sym.SEMICOLON, new TokenVal(yyline+1, CharNum.num));
+  CharNum.num += 1;
+  return S;
+}
+
 "," {
   Symbol S = new Symbol(sym.COMMA, new TokenVal(yyline+1, CharNum.num));
   CharNum.num += 1;
@@ -234,13 +240,13 @@ return new Symbol(sym.EOF);
 }
 
 "<<" {
-  Symbol S = new Symbol(sym.COUT, new TokenVal(yyline+1, CharNum.num));
+  Symbol S = new Symbol(sym.WRITE, new TokenVal(yyline+1, CharNum.num));
   CharNum.num += 2;
   return S;
 }
 
 ">>" {
-  Symbol S = new Symbol(sym.CIN, new TokenVal(yyline+1, CharNum.num));
+  Symbol S = new Symbol(sym.READ, new TokenVal(yyline+1, CharNum.num));
   CharNum.num += 2;
   return S;
 }
@@ -341,6 +347,10 @@ return new Symbol(sym.EOF);
   return S;
 }
 
+((///)|(##))[^\n]*\n {
+  // This is comment of clfat, just ignore
+  CharNum.num += yytext().length();
+}
         
 .         { ErrMsg.fatal(yyline+1, CharNum.num,
                          "ignoring illegal character: " + yytext());
