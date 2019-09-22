@@ -1,6 +1,0 @@
-int a = 4;
-
-int main(){
-    int b = 3;
-    float c = 2.5;
-}
