@@ -189,21 +189,21 @@ return new Symbol(sym.EOF);
   return S;
 }
 
-\"((\\[n|t|'|(\")|(\\)|?])|[^\n\"\\])*\n {
+\"((\\[n|t|'|(\")|(\\)|?])|[^\n\"\\])*(\n)? {
   // Unterminated string literals
   ErrMsg.fatal(yyline+1, CharNum.num, "unterminated string literal ignored");
   // new line char num set to 1
   CharNum.num = 1;
 }
 
-\"((\\[^n|t|'|(\")|(\\)|?])|[^\n\"\\])*\" {
+\"((\\[^n|t|'|(\")|(\\)|?|(\n)])|[^\n\"\\])*\" {
   // string literal with bad escaped character ignored
   ErrMsg.fatal(yyline+1, CharNum.num, 
                         "string literal with bad escaped character ignored");
   CharNum.num += yytext().length();
 }
 
-\"((\\[^n|t|'|(\")|(\\)|?])|[^\n\"\\])*\n {
+\"((\\[^n|t|'|(\")|(\\)|?])|[^\n\"\\])*(\\)?\n {
   // unterminated string literal with bad escaped character ignored
   ErrMsg.fatal(yyline+1, CharNum.num, 
             "unterminated string literal with bad escaped character ignored");

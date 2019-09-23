@@ -44,9 +44,10 @@ return
 /// comment 1
 ## comment 2
 invalid_below
+~
 "unterminated
 "also unterminated \"
 "backslash followed by space: \ is not allowed"
 "bad escaped character: \a AND not terminated
 "very bad string \
-~
+"dfadasf
