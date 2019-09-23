@@ -1,3 +1,5 @@
 *.class
 !deps/*.class
 *.jlex.java
+*.out
+*.err
