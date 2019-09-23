@@ -72,7 +72,6 @@ return new Symbol(sym.EOF);
 
 %%
 
-
 \n        { CharNum.num = 1; }
 
 {WHITESPACE}+  { CharNum.num += yytext().length(); }
@@ -188,6 +187,28 @@ return new Symbol(sym.EOF);
   Symbol S = new Symbol(sym.ID, new IdTokenVal(yyline+1, CharNum.num, yytext()));
   CharNum.num += yytext().length();
   return S;
+}
+
+\"((\\[n|t|'|(\")|(\\)|?])|[^\n\"\\])*\n {
+  // Unterminated string literals
+  ErrMsg.fatal(yyline+1, CharNum.num, "unterminated string literal ignored");
+  // new line char num set to 1
+  CharNum.num = 1;
+}
+
+\"((\\[^n|t|'|(\")|(\\)|?])|[^\n\"\\])*\" {
+  // string literal with bad escaped character ignored
+  ErrMsg.fatal(yyline+1, CharNum.num, 
+                        "string literal with bad escaped character ignored");
+  CharNum.num += yytext().length();
+}
+
+\"((\\[^n|t|'|(\")|(\\)|?])|[^\n\"\\])*\n {
+  // unterminated string literal with bad escaped character ignored
+  ErrMsg.fatal(yyline+1, CharNum.num, 
+            "unterminated string literal with bad escaped character ignored");
+  // new line char num set to 1
+  CharNum.num = 1;
 }
 
 "{" {
