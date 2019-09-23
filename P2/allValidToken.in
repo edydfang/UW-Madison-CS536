@@ -1,0 +1,54 @@
+## int lit
+2019 2021
+2147483647
+## keywords
+bool bool
+int int
+void void
+true true
+false false
+struct struct
+cin cin
+cout cout
+if if
+else else
+while while
+return return
+## ID
+var1 var1
+_var
+var2value
+var_
+test_var
+VAR
+__
+## String lit
+"" "&!88"
+"use \n to denote a newline character"
+"include a quote like this \" and a backslash like this \\"
+/// other symbols
+{ {
+} }
+( (
+) )
+; ;
+, ,
+. .
+<< <<
+>> >>
+++ ++
+-- --
++ +
+- -
+* *
+/ /
+! !
+&& &&
+|| ||
+== ==
+!= !=
+< <
+> >
+<= <=
+>= >=
+= =

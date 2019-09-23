@@ -1,0 +1,10 @@
+2147483648
+~
+$php
+12var
+"unterminated
+"also unterminated \"
+"backslash followed by space: \ is not allowed"
+"bad escaped character: \a AND not terminated
+"very bad string \
+"dfadasf

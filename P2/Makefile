@@ -36,8 +36,11 @@ ErrMsg.class: ErrMsg.java
 # to expected results
 ###
 test: P2.class
-	java -cp $(CP) P2 
-	diff allTokens.in allTokens.out
+	java -cp $(CP) P2 2> testStderr.err
+	@echo "[Note] No diff means the tests are passed."
+	diff allValidToken.std allValidToken.out
+	diff allInvalidToken.std allInvalidToken.out
+	diff testStderr.std testStderr.err
 
 ###
 # clean up
@@ -47,4 +50,5 @@ clean:
 	rm -f *~ *.class cflat.jlex.java
 
 cleantest:
-	rm -f allTokens.out
+	rm -f allValidToken.out testStderr.err stringEOFcase0.out\
+	 stringEOFcase1.out stringEOFcase2.out

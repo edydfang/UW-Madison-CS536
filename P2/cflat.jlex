@@ -203,7 +203,7 @@ return new Symbol(sym.EOF);
   CharNum.num += yytext().length();
 }
 
-\"((\\[^n|t|'|(\")|(\\)|?])|[^\n\"\\])*(\\)?\n {
+\"((\\[^n|t|'|(\")|(\\)|?])|[^\n\"\\])*(\\)?(\n)? {
   // unterminated string literal with bad escaped character ignored
   ErrMsg.fatal(yyline+1, CharNum.num, 
             "unterminated string literal with bad escaped character ignored");
@@ -369,8 +369,8 @@ return new Symbol(sym.EOF);
 }
 
 ((///)|(##))[^\n]*\n {
-  // This is comment of clfat, just ignore
-  CharNum.num += yytext().length();
+  // This is comment of clfat, just ignore, to new line
+  CharNum.num = 1;
 }
         
 .         { ErrMsg.fatal(yyline+1, CharNum.num,

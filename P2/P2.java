@@ -11,11 +11,24 @@ import java_cup.runtime.*;  // defines Symbol
 public class P2 {
     public static void main(String[] args) throws IOException {
                                            // exception may be thrown by yylex
+        String[] input_file_arr = new String[5];
+        String[] output_file_arr = new String[5];
+        String input_file = "allValidToken.in";
+        String output_file = "allValidToken.out";
         // test all tokens
-        testAllTokens();
+        testAllTokens(input_file, output_file);
         CharNum.num = 1;
-    
-        // ADD CALLS TO OTHER TEST METHODS HERE
+        input_file = "allInvalidToken.in";
+        output_file = "allInvalidToken.out";
+        testAllTokens(input_file, output_file);
+
+        for(int i=0;i<3;i++){
+            CharNum.num = 1;
+            input_file = "stringEOFcase" + i + ".in";
+            output_file = "stringEOFcase" + i + ".out";
+            testAllTokens(input_file, output_file);
+        }
+
     }
 
     /**
@@ -27,18 +40,18 @@ public class P2 {
      * correctness of the scanner by comparing the input and output files
      * (e.g., using a 'diff' command).
      */
-    private static void testAllTokens() throws IOException {
+    private static void testAllTokens(String input_file, String output_file) throws IOException {
         // open input and output files
         FileReader inFile = null;
         PrintWriter outFile = null;
         try {
-            inFile = new FileReader("allTokens.in");
-            outFile = new PrintWriter(new FileWriter("allTokens.out"));
+            inFile = new FileReader(input_file);
+            outFile = new PrintWriter(new FileWriter(output_file));
         } catch (FileNotFoundException ex) {
-            System.err.println("File allTokens.in not found.");
+            System.err.printf("File %s not found.\n", input_file);
             System.exit(-1);
         } catch (IOException ex) {
-            System.err.println("allTokens.out cannot be opened.");
+            System.err.printf("%s cannot be opened.\n", output_file);
             System.exit(-1);
         }
 
@@ -46,9 +59,11 @@ public class P2 {
         Yylex my_scanner = new Yylex(inFile);
         Symbol my_token = my_scanner.next_token();
         while (my_token.sym != sym.EOF) {
+            outFile.printf("%d %d ", ((TokenVal)my_token.value).linenum, 
+                ((TokenVal)my_token.value).charnum); 
             switch (my_token.sym) {
             case sym.BOOL:
-                outFile.println("bool"); 
+                outFile.println("bool");
                 break;
 			case sym.INT:
                 outFile.println("int");
