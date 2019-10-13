@@ -99,9 +99,14 @@ non terminal LinkedList structBody;
 
  
 /* NOTE: Add precedence and associativity declarations here */
-precedence left DOT, TIMES, MINUS, PLUS, OR, AND, DIVIDE;
+
 precedence right ASSIGN;
+precedence left OR, AND;
 precedence nonassoc GREATER, LESSEQ, GREATEREQ, LESS, NOTEQUALS, EQUALS;
+precedence left MINUS, PLUS;
+precedence left TIMES, DIVIDE;
+precedence nonassoc NOT;
+precedence left DOT;
 
 start with program;
 
