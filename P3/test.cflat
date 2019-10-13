@@ -1,0 +1,10 @@
+int x;
+int y;
+struct struct_a {
+    int x;
+};
+
+
+int test_fn(bool a, int b) {
+    return true;
+}
