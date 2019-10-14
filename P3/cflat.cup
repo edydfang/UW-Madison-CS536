@@ -152,6 +152,10 @@ varDeclList     ::= varDeclList:vl varDecl:v
 varDecl         ::= type:t id:i SEMICOLON
                 {: RESULT = new VarDeclNode(t, i, VarDeclNode.NOT_STRUCT);
                 :}
+                | STRUCT id:i1 id:i2 SEMICOLON
+                {: // size ?
+                RESULT = new VarDeclNode(new StructNode(i1), i2, 1);
+                :}
                 ;
 
 fnDecl          ::= type:t id:i formals:fms fnBody:fnbd
@@ -189,7 +193,7 @@ formalsList     ::= formalDecl:fd
                     RESULT = ll;
                 :}
                 | formalDecl:fd COMMA formalsList:fl
-                {:  fl.addLast(fd); 
+                {:  fl.addFirst(fd); 
                     RESULT = fl;
                 :}
                 ;

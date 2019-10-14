@@ -1,2 +1,55 @@
 int x;
 int y;
+struct struct_a sa1;
+struct struct_b {
+    int x;
+};
+struct struct_a {
+    int x;
+    struct struct_b y;
+};
+int test_fn2() {
+    return 10;
+}
+int test_fn(bool a, int b) {
+    int c;
+    bool result;
+    a = (!a);
+    a = (a || false);
+    a = (a != false);
+    c = ((b + 1) * 4);
+    c = (c * c);
+    c = (c - 1);
+    c = (c / 2);
+    c++;
+    c--;
+    cin>>tmp_var;
+    cout<<"Hello world\n";
+    if((b <= c)) {
+        b = 99;
+    }
+    if((a == true)) {
+        result = false;
+    } else {
+        result = true;
+    }
+    while(((c > 0) && (c < 100))) {
+        c++;
+    }
+    while((c <= 0)) {
+        c = (c + 10);
+    }
+    while((c >= 5)) {
+        c = (c - 1);
+    }
+    repeat(20) {
+        c = (c + 2);
+    }
+    return c;
+}
+void main() {
+    test_fn(true, 15);
+    test_fn2();
+    sa1.x = (-2);
+    return;
+}
