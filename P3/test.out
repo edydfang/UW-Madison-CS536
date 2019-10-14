@@ -19,7 +19,8 @@ int test_fn2() {
         while(c) {
             y = ((y * 2) + x);
         }
-    } else {
+    }
+    else {
         x = 0;
     }
     return 10;
@@ -43,7 +44,8 @@ int test_fn(bool a, int b) {
     }
     if((a == true)) {
         result = false;
-    } else {
+    }
+    else {
         result = true;
     }
     while(((c > 0) && (c < 100))) {

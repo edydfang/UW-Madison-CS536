@@ -512,7 +512,9 @@ class IfElseStmtNode extends StmtNode {
         myThenDeclList.unparse(p, indent+4);
         myThenStmtList.unparse(p, indent+4);
         addIndent(p, indent);
-        p.println("} else {");
+        p.println("}");
+        addIndent(p, indent);
+        p.println("else {");
         myElseDeclList.unparse(p, indent+4);
         myElseStmtList.unparse(p, indent+4);
         addIndent(p, indent);
