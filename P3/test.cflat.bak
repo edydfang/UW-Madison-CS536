@@ -17,6 +17,12 @@ struct struct_a {
 // fn without prarmeters
 int test_fn2() {
     // fnBody
+    int b;
+    int x;
+    int y;
+    b = -1;
+    y = 1;
+    if (b == -1) { x = 4+3*5-y; while (c) { y = y*2+x; } } else { x = 0; }
     return 10;
 }
 
