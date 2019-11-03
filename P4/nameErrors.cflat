@@ -1,42 +1,81 @@
 int a;
-int a;
-
 struct Point {
     int x;
     int y;
     int Point;
 };
-
 struct Line {
     struct Point p1;
     struct Point p2;
     int width;
 };
 
-int Tri;
-struct Tri {
-    struct Point p1;
-    struct Point p2;
-    struct Point p3;
+// multiple declarations
+int a;
+bool a;
+struct Point a;
+struct a{
+    int test;
+};
+// multiple declarations in formal list or body declarations
+void a(int param1, int param2, bool param1) {
+    // multiple declarations inside function
+    int a1;
+    int a1;
+    return;
+}
+
+struct Point pt1;
+struct Line line1;
+
+// Invalid name of struct type
+struct Space d;
+void fn_a(){
+    struct Cube cube;
+    return;
+}
+struct User {
+    struct Job job;
+    int userid;
 };
 
-struct Point p;
-struct Line c;
-struct Space d;
+// Non-function declared void
 void e;
-
-int f(int x, bool b) { }
-void g() {
-    int a;
-    bool b;
-    struct Point p;
-    p4.x = 1;
-    p4.x.y = 1;
-    c.p1.x = 1;
-    c.p2.z = 2;
-    c.p3.x = 3;
-    p.x = a;
-    b = a == 3;
-    f(a + p.y*2, b);
-    g();
+void a;
+void fn_b(){
+    void test;
+    return;
 }
+
+int fn_c(int param1, bool param2){
+    int result;
+    if (param3) {
+        int param3;
+        result = param3*param2;
+    } else {
+        int param4;
+        result = param3 + param4;
+    }
+    if (param2) {
+        result = result * 2;
+    }
+    return result;
+}
+
+void fn_d(){
+    struct Point pt2;
+    struct Line line2;
+    // bad struct access RHS
+    pt1.z = 0;
+    pt2.z = 1;
+    line1.p1.z = 0;
+    line2.p3.x = 0;
+    // bad struct access LHS
+    pt3.x = 0;
+    // Undeclared identifier
+    var1 = 2 * var2;
+    fn_c(var1, var2);
+    return;
+}
+
+

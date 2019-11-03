@@ -2,6 +2,7 @@ import java.util.LinkedList;
 
 public class Sym {
     private String type;
+    // private String kind;
     private SymTable symTable;
     private StructDeclNode struct;
     
@@ -36,12 +37,17 @@ class FuncSym extends Sym {
         super("function");
         this.paramTypes = paramTypes;
         this.returnType = returnType;
+        // System.out.println("adding" + String.join(", ", paramTypes));
     }
 
     public int getParamNum(){
         return paramTypes.size();
     }
     public String toString() {
-        return String.join(", ", paramTypes) + " -> " + returnType;
+        String params = String.join(", ", paramTypes);
+        if (params.equals("")) {
+            params = "void";
+        }
+        return params + " -> " + returnType;
     }
 }
