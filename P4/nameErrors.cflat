@@ -1,0 +1,42 @@
+int a;
+int a;
+
+struct Point {
+    int x;
+    int y;
+    int Point;
+};
+
+struct Line {
+    struct Point p1;
+    struct Point p2;
+    int width;
+};
+
+int Tri;
+struct Tri {
+    struct Point p1;
+    struct Point p2;
+    struct Point p3;
+};
+
+struct Point p;
+struct Line c;
+struct Space d;
+void e;
+
+int f(int x, bool b) { }
+void g() {
+    int a;
+    bool b;
+    struct Point p;
+    p4.x = 1;
+    p4.x.y = 1;
+    c.p1.x = 1;
+    c.p2.z = 2;
+    c.p3.x = 3;
+    p.x = a;
+    b = a == 3;
+    f(a + p.y*2, b);
+    g();
+}
