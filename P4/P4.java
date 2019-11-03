@@ -48,15 +48,19 @@ public class P4 {
 
         try {
             root = P.parse(); // do the parse
+            // syntax error will exit in parse function
             System.out.println ("program parsed correctly.");
         } catch (Exception ex){
             System.err.println("Exception occured during parse: " + ex);
             System.exit(-1);
         }
-
-    // ADD NAME ANALYSIS PART HERE
+        // no syntax error
+        // ADD NAME ANALYSIS PART HERE
         ((ProgramNode)root.value).nameAnalyze();
-        ((ASTnode)root.value).unparse(outFile, 0);
+        if(!ErrMsg.hasFatal) {
+            // no name analysis error
+            ((ASTnode)root.value).unparse(outFile, 0);
+        }
         outFile.close();
 
         return;
