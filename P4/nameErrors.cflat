@@ -59,6 +59,14 @@ int fn_c(int param1, bool param2){
     if (param2) {
         result = result * 2;
     }
+    x = z - z;
+    x = z + z;
+    x = z * z;
+    x = z / 2;
+    x ++;
+    z --;
+    cout << z;
+    cin >> z;
     return result;
 }
 

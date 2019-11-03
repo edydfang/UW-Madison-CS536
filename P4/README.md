@@ -7,6 +7,11 @@ anlyzer performs the following tasks: 1) Build symbol tables. 2) Find multiply
 declared names, uses of undeclared names, bad struct accesses, and bad 
 declarations. 3) Add IdNode links so that show the Id type during unparsing.
 
+## Assumptions
+
+- structs can me nested declared
+
+
 ## How to build and test
 
 The test input is in the `test.cflat` and `nameErrors.cflat`. The unparsed 

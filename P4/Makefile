@@ -39,6 +39,7 @@ ErrMsg.class: ErrMsg.java
 	$(JC) $(FLAGS) -cp $(CP) ErrMsg.java
 
 Sym.class: Sym.java
+	$(JC) $(FLAGS) -cp $(CP) ast.java
 	$(JC) $(FLAGS) -cp $(CP) Sym.java
 
 SymTable.class: SymTable.java Sym.class DuplicateSymException.class WrongArgumentException.class EmptySymTableException.class

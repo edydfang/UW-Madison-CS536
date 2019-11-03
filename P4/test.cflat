@@ -32,6 +32,16 @@ int b(int num){
 
 int f(int x, bool b) { 
     int x;
+    int result;
+    result = x + b;
+    var_a ++;
+    var_b --;
+    result = var_a + b;
+    var_c = var_b == x;
+    result = var_a * var_b;
+    result = var_a / 5;
+    result = point0.x - var_b;
+    point0.x = var_a;
     if (b) {
         return x + 1;
     } else {
