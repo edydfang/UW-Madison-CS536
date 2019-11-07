@@ -49,6 +49,11 @@ void fn_b(){
 
 int fn_c(int param1, bool param2){
     int result;
+    int Point;
+    // invalid struct name
+    struct Point p;
+    // undeclared
+    p.x = 5;
     if (param3) {
         int param3;
         result = param3*param2;

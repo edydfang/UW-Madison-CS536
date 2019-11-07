@@ -319,20 +319,23 @@ class VarDeclNode extends DeclNode {
     }
     // normal var declaration
     public SymTable nameAnalyze(SymTable symTable){
-        this.nameAnalyzeVarName(symTable);
         if (myType instanceof VoidNode) {
             ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(), 
             "Non-function declared void");
+	    return symTable;
         }
         if (myType instanceof StructNode) {
-            this.nameAnalyzeStructName(symTable);
+            boolean result = this.nameAnalyzeStructName(symTable);
             Sym structSym = symTable.lookupGlobal(((StructNode)myType).getId().toString());
+	    if(structSym == null || result == false){
+	    	return symTable;
+	    }
+            this.nameAnalyzeVarName(symTable);
             Sym mySym = symTable.lookupGlobal(myId.toString());
-            if(structSym!=null){
-                // System.out.println(myId.toString() + " " + structSym.getStruct());
-                myId.setStruct(structSym.getStruct(), mySym); 
-            }
+            myId.setStruct(structSym.getStruct(), mySym); 
+	    return symTable;
         }
+        this.nameAnalyzeVarName(symTable);
         return symTable;
     }
     // var name checking
@@ -364,14 +367,15 @@ class VarDeclNode extends DeclNode {
         }
     }
     // only when it is struct decl
-    public void nameAnalyzeStructName(SymTable symTable){
+    public boolean nameAnalyzeStructName(SymTable symTable){
         IdNode structId = ((StructNode)this.myType).getId();
         Sym sym = symTable.lookupGlobal(structId.toString());
         if(sym == null || !sym.getType().equals("struct-decl")) {
             ErrMsg.fatal(structId.getLineNum(), structId.getCharNum(), 
             "Invalid name of struct type");
+	    return false;
         }
-        return;
+        return true;
     }
     public int getSize(){
         return mySize;
@@ -1047,6 +1051,10 @@ class DotAccessExpNode extends ExpNode {
             // get the sym for this id
             Sym lookUpSym = symTable.lookupGlobal(((IdNode)myLoc).toString());
             if(lookUpSym == null){
+                /* ErrMsg.fatal(((IdNode)myLoc).getLineNum(), 
+                ((IdNode)myLoc).getCharNum(), 
+                "Undeclared identifier");
+		*/
                 return null;
             }
             if(lookUpSym.getStruct() == null){
