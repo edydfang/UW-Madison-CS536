@@ -10,6 +10,7 @@ declarations. 3) Add IdNode links so that show the Id type during unparsing.
 ## Assumptions
 
 - structs can me nested declared
+- Undefined behavioral: call symbole that are not a function ID
 
 
 ## How to build and test
