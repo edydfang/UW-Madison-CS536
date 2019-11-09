@@ -13,33 +13,33 @@ program parsed correctly.
 43:6 ***ERROR*** Non-function declared void
 44:6 ***ERROR*** Non-function declared void
 46:10 ***ERROR*** Non-function declared void
-53:12 ***ERROR*** Invalid name of struct type
-54:5 ***ERROR*** Undeclared identifier
-55:9 ***ERROR*** Undeclared identifier
-60:27 ***ERROR*** Undeclared identifier
-65:5 ***ERROR*** Undeclared identifier
-65:9 ***ERROR*** Undeclared identifier
-65:13 ***ERROR*** Undeclared identifier
-66:5 ***ERROR*** Undeclared identifier
-66:9 ***ERROR*** Undeclared identifier
-66:13 ***ERROR*** Undeclared identifier
+54:12 ***ERROR*** Invalid name of struct type
+56:5 ***ERROR*** Undeclared identifier
+57:9 ***ERROR*** Undeclared identifier
+62:18 ***ERROR*** Undeclared identifier
 67:5 ***ERROR*** Undeclared identifier
 67:9 ***ERROR*** Undeclared identifier
 67:13 ***ERROR*** Undeclared identifier
 68:5 ***ERROR*** Undeclared identifier
 68:9 ***ERROR*** Undeclared identifier
+68:13 ***ERROR*** Undeclared identifier
 69:5 ***ERROR*** Undeclared identifier
+69:9 ***ERROR*** Undeclared identifier
+69:13 ***ERROR*** Undeclared identifier
 70:5 ***ERROR*** Undeclared identifier
-71:13 ***ERROR*** Undeclared identifier
-72:12 ***ERROR*** Undeclared identifier
-80:9 ***ERROR*** Invalid struct field name
-81:9 ***ERROR*** Invalid struct field name
-82:14 ***ERROR*** Invalid struct field name
-83:11 ***ERROR*** Invalid struct field name
-85:5 ***ERROR*** Undeclared identifier
+70:9 ***ERROR*** Undeclared identifier
+71:5 ***ERROR*** Undeclared identifier
+72:5 ***ERROR*** Undeclared identifier
+73:13 ***ERROR*** Undeclared identifier
+74:12 ***ERROR*** Undeclared identifier
+82:9 ***ERROR*** Invalid struct field name
+83:9 ***ERROR*** Invalid struct field name
+84:14 ***ERROR*** Invalid struct field name
+85:11 ***ERROR*** Invalid struct field name
 87:5 ***ERROR*** Undeclared identifier
-87:16 ***ERROR*** Undeclared identifier
-88:10 ***ERROR*** Undeclared identifier
-88:16 ***ERROR*** Undeclared identifier
+89:5 ***ERROR*** Undeclared identifier
+89:16 ***ERROR*** Undeclared identifier
+90:10 ***ERROR*** Undeclared identifier
+90:16 ***ERROR*** Undeclared identifier
 java -cp ./deps:. P4 test.cflat test.out
 program parsed correctly.

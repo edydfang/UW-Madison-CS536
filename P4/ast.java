@@ -763,7 +763,7 @@ class IfElseStmtNode extends StmtNode {
             System.out.println(ex);
         }
         symTable.addScope();
-        myThenDeclList.nameAnalyze(symTable);
+        myElseDeclList.nameAnalyze(symTable);
         myElseStmtList.nameAnalyze(symTable);
         try{
             symTable.removeScope();
