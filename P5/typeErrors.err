@@ -1,0 +1,136 @@
+javac -g -cp ./deps:. Sym.java ast.java
+javac -g -cp ./deps:. ast.java Type.java
+javac -g -cp ./deps:. parser.java
+Note: parser.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+javac -g -cp ./deps:. P5.java
+java -cp ./deps:. P5 test.cflat test.out
+java -cp ./deps:. P5 typeErrors.cflat typeErrors.out
+37:13 ***ERROR*** Attempt to write a function
+39:13 ***ERROR*** Attempt to write a struct name
+41:13 ***ERROR*** Attempt to write a struct variable
+43:13 ***ERROR*** Function call with wrong number of args
+43:13 ***ERROR*** Attempt to write void
+45:12 ***ERROR*** Attempt to read a function
+47:12 ***ERROR*** Attempt to read a struct name
+49:12 ***ERROR*** Attempt to read a struct variable
+51:5 ***ERROR*** Attempt to call a non-function
+52:5 ***ERROR*** Attempt to call a non-function
+53:5 ***ERROR*** Attempt to call a non-function
+55:5 ***ERROR*** Function call with wrong number of args
+57:14 ***ERROR*** Type of actual does not match type of formal
+0:0 ***ERROR*** Missing return value
+0:0 ***ERROR*** Missing return value
+0:0 ***ERROR*** Missing return value
+0:0 ***ERROR*** Missing return value
+0:0 ***ERROR*** Missing return value
+81:16 ***ERROR*** Return with a value in a void function
+84:16 ***ERROR*** Return with a value in a void function
+87:16 ***ERROR*** Return with a value in a void function
+90:16 ***ERROR*** Return with a value in a void function
+92:12 ***ERROR*** Return with a value in a void function
+98:16 ***ERROR*** Return with a value in a void function
+101:16 ***ERROR*** Return with a value in a void function
+104:16 ***ERROR*** Return with a value in a void function
+107:16 ***ERROR*** Return with a value in a void function
+109:12 ***ERROR*** Return with a value in a void function
+115:16 ***ERROR*** Bad return value
+118:16 ***ERROR*** Bad return value
+121:16 ***ERROR*** Bad return value
+124:16 ***ERROR*** Bad return value
+126:12 ***ERROR*** Bad return value
+132:16 ***ERROR*** Bad return value
+135:16 ***ERROR*** Bad return value
+138:16 ***ERROR*** Bad return value
+141:16 ***ERROR*** Bad return value
+143:12 ***ERROR*** Bad return value
+160:10 ***ERROR*** Arithmetic operator applied to non-numeric operand
+161:15 ***ERROR*** Arithmetic operator applied to non-numeric operand
+162:10 ***ERROR*** Arithmetic operator applied to non-numeric operand
+163:15 ***ERROR*** Arithmetic operator applied to non-numeric operand
+164:10 ***ERROR*** Arithmetic operator applied to non-numeric operand
+165:15 ***ERROR*** Arithmetic operator applied to non-numeric operand
+166:10 ***ERROR*** Arithmetic operator applied to non-numeric operand
+167:15 ***ERROR*** Arithmetic operator applied to non-numeric operand
+168:5 ***ERROR*** Arithmetic operator applied to non-numeric operand
+169:5 ***ERROR*** Arithmetic operator applied to non-numeric operand
+171:10 ***ERROR*** Relational operator applied to non-numeric operand
+171:15 ***ERROR*** Relational operator applied to non-numeric operand
+172:10 ***ERROR*** Relational operator applied to non-numeric operand
+172:15 ***ERROR*** Relational operator applied to non-numeric operand
+173:10 ***ERROR*** Relational operator applied to non-numeric operand
+173:16 ***ERROR*** Relational operator applied to non-numeric operand
+174:10 ***ERROR*** Relational operator applied to non-numeric operand
+174:16 ***ERROR*** Relational operator applied to non-numeric operand
+176:11 ***ERROR*** Logical operator applied to non-bool operand
+177:11 ***ERROR*** Logical operator applied to non-bool operand
+178:10 ***ERROR*** Logical operator applied to non-bool operand
+179:16 ***ERROR*** Logical operator applied to non-bool operand
+180:10 ***ERROR*** Logical operator applied to non-bool operand
+181:16 ***ERROR*** Logical operator applied to non-bool operand
+183:9 ***ERROR*** Non-bool expression used as an if condition
+186:9 ***ERROR*** Non-bool expression used as an if condition
+192:11 ***ERROR*** Non-bool expression used as a while condition
+196:12 ***ERROR*** Non-integer expression used as a repeat clause
+200:10 ***ERROR*** Type mismatch
+201:10 ***ERROR*** Type mismatch
+203:10 ***ERROR*** Type mismatch
+204:10 ***ERROR*** Type mismatch
+205:10 ***ERROR*** Type mismatch
+206:10 ***ERROR*** Type mismatch
+208:10 ***ERROR*** Equality operator applied to functions
+209:10 ***ERROR*** Equality operator applied to functions
+212:10 ***ERROR*** Equality operator applied to struct variables
+213:10 ***ERROR*** Equality operator applied to struct variables
+215:10 ***ERROR*** Equality operator applied to struct names
+216:10 ***ERROR*** Equality operator applied to struct names
+219:5 ***ERROR*** Function assignment
+221:5 ***ERROR*** Struct name assignment
+223:5 ***ERROR*** Struct variable assignment
+236:11 ***ERROR*** Arithmetic operator applied to non-numeric operand
+236:15 ***ERROR*** Arithmetic operator applied to non-numeric operand
+237:11 ***ERROR*** Type mismatch
+238:11 ***ERROR*** Relational operator applied to non-numeric operand
+238:15 ***ERROR*** Relational operator applied to non-numeric operand
+239:11 ***ERROR*** Equality operator applied to functions
+242:5 ***ERROR*** Attempt to call a non-function
+243:5 ***ERROR*** Function call with wrong number of args
+244:5 ***ERROR*** Function call with wrong number of args
+245:12 ***ERROR*** Type of actual does not match type of formal
+246:7 ***ERROR*** Type of actual does not match type of formal
+246:12 ***ERROR*** Type of actual does not match type of formal
+247:5 ***ERROR*** Attempt to call a non-function
+250:5 ***ERROR*** Type mismatch
+251:5 ***ERROR*** Struct variable assignment
+252:12 ***ERROR*** Attempt to read a struct name
+253:17 ***ERROR*** Logical operator applied to non-bool operand
+254:11 ***ERROR*** Logical operator applied to non-bool operand
+254:18 ***ERROR*** Logical operator applied to non-bool operand
+257:12 ***ERROR*** Return with a value in a void function
+260:18 ***ERROR*** Arithmetic operator applied to non-numeric operand
+261:17 ***ERROR*** Arithmetic operator applied to non-numeric operand
+262:5 ***ERROR*** Type mismatch
+265:18 ***ERROR*** Arithmetic operator applied to non-numeric operand
+265:28 ***ERROR*** Relational operator applied to non-numeric operand
+265:34 ***ERROR*** Relational operator applied to non-numeric operand
+267:13 ***ERROR*** Arithmetic operator applied to non-numeric operand
+268:12 ***ERROR*** Arithmetic operator applied to non-numeric operand
+269:29 ***ERROR*** Logical operator applied to non-bool operand
+270:5 ***ERROR*** Function call with wrong number of args
+271:15 ***ERROR*** Attempt to call a non-function
+272:12 ***ERROR*** Arithmetic operator applied to non-numeric operand
+274:10 ***ERROR*** Arithmetic operator applied to non-numeric operand
+276:10 ***ERROR*** Arithmetic operator applied to non-numeric operand
+279:13 ***ERROR*** Arithmetic operator applied to non-numeric operand
+281:14 ***ERROR*** Arithmetic operator applied to non-numeric operand
+283:9 ***ERROR*** Arithmetic operator applied to non-numeric operand
+285:11 ***ERROR*** Arithmetic operator applied to non-numeric operand
+285:18 ***ERROR*** Arithmetic operator applied to non-numeric operand
+286:15 ***ERROR*** Function call with wrong number of args
+286:15 ***ERROR*** Arithmetic operator applied to non-numeric operand
+287:20 ***ERROR*** Type of actual does not match type of formal
+287:15 ***ERROR*** Arithmetic operator applied to non-numeric operand
+288:14 ***ERROR*** Arithmetic operator applied to non-numeric operand
+288:11 ***ERROR*** Return with a value in a void function
+Type checking error
+make: *** [Makefile:64: test] Error 255

@@ -1,0 +1,62 @@
+// declarations
+struct Point {
+    int x;
+    int y;
+};
+struct Line {
+    struct Point p1;
+    struct Point p2;
+    int width;
+};
+
+int var_a;
+int var_b;
+bool var_c;
+struct Point point0;
+struct Line line0;
+
+int a(int a, bool b) {
+    int var_a;
+    int var_c;
+    struct Point point0;
+    var_a = var_c + a;
+    return var_a;
+}
+
+int b(int num){
+    if(num > 100){
+        return num;
+    }
+    return b(num + 1);
+}
+
+int f(int x, bool b) { 
+    int result;
+    result = x * 2;
+    var_a ++;
+    var_b --;
+    result = var_a + x;
+    var_c = var_b == x;
+    result = var_a * var_b;
+    result = var_a / 5;
+    result = point0.x - var_b;
+    point0.x = var_a;
+    if (b) {
+        return x + 1;
+    } else {
+        return x - 1;
+    }
+}
+bool func1(){
+    return true;
+}
+
+void g() {
+    int a;
+    bool b;
+    struct Point p;
+    p.x = a;
+    b = a == 3;
+    f(a + p.y*2, func1());
+    g();
+}

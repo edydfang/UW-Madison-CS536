@@ -60,26 +60,86 @@ void main(){
 
 int func2(){
     // Missing return value
+    if(true){
+        return;
+    }
+    if(true){}else{
+        return;
+    }
+    while(true){
+        return;
+    }
+    repeat(2){
+        return;
+    }
     return;
 }
 
 void func3(){
     // Return with a value in a void function
+    if(true){
+        return 1;
+    }
+    if(true){}else{
+        return 1;
+    }
+    while(true){
+        return 1;
+    }
+    repeat(2){
+        return 1;
+    }
     return 1;
 }
 
 void func4(int a){
     // Return with a value in a void function
+    if(true){
+        return a;
+    }
+    if(true){}else{
+        return a;
+    }
+    while(true){
+        return a;
+    }
+    repeat(2){
+        return a;
+    }
     return a;
 }
 
 int func5(){
     // Bad return value
+    if(true){
+        return true;
+    }
+    if(true){}else{
+        return true;
+    }
+    while(true){
+        return true;
+    }
+    repeat(2){
+        return true;
+    }
     return true;
 }
 
 bool func6(){
     // Bad return value
+    if(true){
+        return 0;
+    }
+    if(true){}else{
+        return 0;
+    }
+    while(true){
+        return 0;
+    }
+    repeat(2){
+        return 0;
+    }
     return 0;
 }
 
@@ -203,7 +263,7 @@ void main2() {
 
     // don't give too many or too few error messages here 
     bbb = (aaa + true) && (bbb < true);
-
+    // error push up check
     cout << Point + 1;       // P + 1 is an error; the write is OK
     aaa = (true + 3) * 4;       // true + 3 is an error; the * is OK
     bbb = true && (false || 3);   // false || 3 is an error; the && is OK
@@ -211,6 +271,17 @@ void main2() {
     aaa = 1 + p1();               // p() is an error; the + is OK
     bbb = (true + 3) == x;        // true + 3 is an error; the == is OK
                         // regardless of the type of x
+    if(1+true){
+    }
+    if(1+true){
+    }else{
+    }
+    while(1+true){
+    }
+    repeat(1+true){
+    }
+    f(1+true, true);
+    // negative samples
     aaa = true + "hello";    // one error for each of the non-int operands of the +
     aaa = 1 + f(true);       // one for the bad arg type and one for the 2nd operand of the +
     aaa = 1 + f(1, 2);       // one for the wrong number of args and one for the 2nd operand of the +

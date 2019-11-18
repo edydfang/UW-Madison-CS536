@@ -1003,7 +1003,10 @@ class IfStmtNode extends StmtNode {
     }
     public void typeCheck(Type fnReturnType) {
         Type conditionType = myExp.typeCheck();
-        if(!conditionType.isBoolType()){
+        if(conditionType.isErrorType()) {
+            return;
+        }
+        if(!conditionType.isBoolType()) {
             ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), 
                         "Non-bool expression used as an if condition");
         }
@@ -1074,6 +1077,9 @@ class IfElseStmtNode extends StmtNode {
     }
     public void typeCheck(Type fnReturnType) {
         Type conditionType = myExp.typeCheck();
+        if(conditionType.isErrorType()) {
+            return;
+        }
         if(!conditionType.isBoolType()){
             ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), 
                         "Non-bool expression used as an if condition");
@@ -1136,6 +1142,9 @@ class WhileStmtNode extends StmtNode {
     }
     public void typeCheck(Type fnReturnType) {
         Type conditionType = myExp.typeCheck();
+        if(conditionType.isErrorType()) {
+            return;
+        }
         if(!conditionType.isBoolType()){
             ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), 
                         "Non-bool expression used as a while condition");
@@ -1189,6 +1198,9 @@ class RepeatStmtNode extends StmtNode {
     }
     public void typeCheck(Type fnReturnType) {
         Type conditionType = myExp.typeCheck();
+        if(conditionType.isErrorType()) {
+            return;
+        }
         if(!conditionType.isIntType()){
             ErrMsg.fatal(myExp.lineNum(), myExp.charNum(), 
                         "Non-integer expression used as a repeat clause");
@@ -1622,6 +1634,7 @@ class AssignNode extends ExpNode {
         Type rightType = myExp.typeCheck();
         Type leftType = myLhs.typeCheck();
         if(rightType.isErrorType()){
+            // ErrorType
             return leftType;
         }
         if(!myLhs.typeCheck().equals(rightType)){
@@ -1719,7 +1732,11 @@ class CallExpNode extends ExpNode {
 
             while (it1.hasNext() && it2.hasNext()) {
                 ExpNode tmpExp = it2.next();
-                if(!it1.next().equals(tmpExp.typeCheck())){
+                Type tmpType = tmpExp.typeCheck();
+                if(!it1.next().equals(tmpType)){
+                    if(tmpType.isErrorType()){
+                        continue;
+                    }
                     ErrMsg.fatal(tmpExp.lineNum(), tmpExp.charNum(), 
                     "Type of actual does not match type of formal");
                 }
