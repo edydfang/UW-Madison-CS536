@@ -9,6 +9,7 @@ public class Sym {
     
     public Sym(Type type) {
         this.type = type;
+        this.type.setSym(this);
     }
     
     public Type getType() {

@@ -2,4 +2,6 @@
 *.out
 *.pdf
 sym.java
+cflat.jlex.java
+parser.java
 

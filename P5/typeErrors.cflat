@@ -1,0 +1,219 @@
+
+// typeErrors.cflat should contain code with errors detected by the type checker. 
+// For every type error listed in the table above, you should include an instance 
+// of that error for each of the relevant operators, and in each part of a program 
+// where the error can occur (e.g., in a top-level statement, in a statement inside 
+// a while loop, etc). 
+
+
+struct Point {
+    int x;
+    int y;
+};
+
+struct Line {
+    int p1x;
+    int p1y;
+    int p2x;
+    int p2y;
+};
+
+struct S { int a; };
+
+bool bbb;
+struct S t;
+
+struct Point p1;
+
+void func1(int a, int b){
+    return;
+}
+
+void main(){
+    int argc;
+    int a;
+    bool b;
+    // Attempt to write a function
+    cout << func1;
+    // Attempt to write a struct name
+    cout << Point;
+    // Attempt to write a struct variable
+    cout << p1;
+    // Attempt to write void
+    cout << func1();
+    // Attempt to read a function
+    cin >> func1;
+    // Attempt to read a struct name
+    cin >> Point;
+    // Attempt to read a struct variable
+    cin >> p1;
+    // Attempt to call a non-function
+    p1();
+    argc();
+    b();
+    // Function call with wrong number of args
+    func1(b);
+    // Type of actual does not match type of formal
+    func1(a, b);
+    return;
+}
+
+int func2(){
+    // Missing return value
+    return;
+}
+
+void func3(){
+    // Return with a value in a void function
+    return 1;
+}
+
+void func4(int a){
+    // Return with a value in a void function
+    return a;
+}
+
+int func5(){
+    // Bad return value
+    return true;
+}
+
+bool func6(){
+    // Bad return value
+    return 0;
+}
+
+void void_func(){
+    return;
+}
+
+void func7(){
+    int a1;
+    int a2;
+    int a3;
+    bool b1;
+    bool b2;
+    bool b3;
+    struct Point p1;
+    struct Point p2;
+    // Arithmetic operator applied to non-numeric operand
+    a1 = b1 + a2;
+    a1 = a1 + b2;
+    a1 = b1 - a2;
+    a1 = a1 - b2;
+    a1 = b1 * a2;
+    a1 = a1 * b2;
+    a1 = b1 / a2;
+    a1 = a1 / b2;
+    b1 ++;
+    b1 --;
+    // Relational operator applied to non-numeric operand
+    b2 = b1 > p1;
+    b2 = b1 < p1;
+    b2 = b1 <= p1;
+    b2 = b1 >= p1;
+    // Logical operator applied to non-bool operand
+    b3 = !a1;
+    b3 = !p2;
+    b3 = p1 && b1;
+    b3 = b1 && a1;
+    b3 = p1 || b1;
+    b3 = b1 || a1;
+    // Non-bool expression used as an if condition
+    if (a1) {
+        a2 = 0;
+    }
+    if (a3) {
+        a2 = 0;
+    } else {
+        a2 = 1;
+    }
+    // Non-bool expression used as a while condition
+    while(p1) {
+
+    }
+    // Non-integer expression used as a repeat clause
+    repeat(b1) {
+
+    }
+    // Type mismatch
+    b3 = a1 == b2;
+    b3 = a1 != b2;
+    // Equality operator applied to void functions
+    b3 = void_func() == a1;
+    b3 = a1 == void_func();
+    b3 = a1 != void_func();
+    b3 = void_func() != a1;
+    // Equality operator applied to functions
+    b3 = func1 == func2;
+    b3 = func1 != func2;
+    // Equality operator applied to struct names
+    // type mismatch?
+    b3 = Point == Point;
+    b3 = Point != Point;
+    // Equality operator applied to struct variables
+    b3 = p1 == p2;
+    b3 = p1 != p2;
+    // Function assignment
+    // what if RHS is not a function?
+    func2 = func2;
+    // Struct name assignment
+    Point = Line;
+    // Struct variable assignment
+    p1 = p2;
+    return;
+}
+
+// example from specification
+void f(int p1, bool p2) {
+}
+
+void main2() {
+    int aaa;
+    int x;
+
+    // some errors involving illegal operations on functions
+    aaa = f + f;
+    bbb = f == 3;
+    bbb = f > main;
+    bbb = f == f;
+
+    // some errors involving bad function calls 
+    aaa();
+    f();
+    f(5);
+    f(aaa, aaa);
+    f(t, t.a);
+    S();
+
+    // some errors involving structs 
+    t = 5;
+    t = t;
+    cin >> S;
+    t = true || 3;
+    bbb = S && t.a;
+
+    // error involving return
+    return 10;
+
+    // other type errors 
+    aaa = aaa + (!false);
+    aaa = aaa + "foo";
+    bbb = aaa;
+
+    // don't give too many or too few error messages here 
+    bbb = (aaa + true) && (bbb < true);
+
+    cout << Point + 1;       // P + 1 is an error; the write is OK
+    aaa = (true + 3) * 4;       // true + 3 is an error; the * is OK
+    bbb = true && (false || 3);   // false || 3 is an error; the && is OK
+    f("a" * 4);            // "a" * 4 is an error; the call is OK
+    aaa = 1 + p1();               // p() is an error; the + is OK
+    bbb = (true + 3) == x;        // true + 3 is an error; the == is OK
+                        // regardless of the type of x
+    aaa = true + "hello";    // one error for each of the non-int operands of the +
+    aaa = 1 + f(true);       // one for the bad arg type and one for the 2nd operand of the +
+    aaa = 1 + f(1, 2);       // one for the wrong number of args and one for the 2nd operand of the +
+    return 3+true;    // in a void function: one error for the 2nd operand to +
+                  // and one for returning a value
+}

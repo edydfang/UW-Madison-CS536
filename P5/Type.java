@@ -7,15 +7,24 @@ abstract public class Type {
     /**
      * default constructor
      */
+    public Type(Sym linkedSym) {
+        this.linkedSym = linkedSym;
+    }
     public Type() {
     }
-
     /**
      * every subclass must provide a toString method and an equals method
      */
     abstract public String toString();
     abstract public boolean equals(Type t);
 
+    protected Sym linkedSym;
+    public Sym getSym() {
+        return linkedSym;
+    }
+    public void setSym(Sym symbol) {
+        this.linkedSym = symbol;
+    }
     /**
      * default methods for "isXXXType"
      */
@@ -200,3 +209,4 @@ class StructDefType extends Type {
         return "struct";
     }
 }
+
