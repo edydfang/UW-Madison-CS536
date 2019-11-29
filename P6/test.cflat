@@ -6,6 +6,11 @@ int test_fn(int a, bool b){
     bool d;
     int e;
     c = a + var1;
+    cout << "test_fn: ";
+    cout << c;
+    cout << "\n";
+    return 0;
+    cout << "output after return";
     d = b;
     return 0;
 }
@@ -15,6 +20,7 @@ void main() {
     bool b1;
     bool b2;
     int num1;
+    int num2;
     // var2 = false;
     // var1 = 1 + 3;
     var1 = -8;
