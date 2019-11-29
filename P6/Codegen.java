@@ -247,8 +247,15 @@ public class Codegen {
     //        L0 L1 L2, etc.
     // **********************************************************************
     public static String nextLabel() {
-        Integer k = new Integer(currLabel++);
+        Integer k = Integer.valueOf(currLabel++);
         String tmp = ".L" + k;
         return(tmp);
+    }
+
+    public static String addGlobalVar(String varName) {
+        int varSize = 4;
+        String tmp = String.format("\t.data\n\t.align 2\n_%s:\t.space %d\n", 
+                    varName, varSize);
+        return tmp;
     }
 }

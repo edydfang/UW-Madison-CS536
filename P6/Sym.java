@@ -6,6 +6,8 @@ import java.util.*;
  */
 public class Sym {
     private Type type;
+    private int offset;
+    private boolean isLocal = false;
     
     public Sym(Type type) {
         this.type = type;
@@ -16,7 +18,25 @@ public class Sym {
     }
     
     public String toString() {
-        return type.toString();
+        String unparseStr;
+        if (this.isLocal) {
+            unparseStr = Integer.toString(this.offset) + ", " + type.toString();
+        } else {
+            unparseStr = "global, " + type.toString();
+        }
+        return unparseStr;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+
+    public void setLocal() {
+        this.isLocal = true;
     }
 }
 
@@ -30,6 +50,8 @@ class FnSym extends Sym {
     private Type returnType;
     private int numParams;
     private List<Type> paramTypes;
+    private int sizeParams = 0;
+    private int sizeLocals = 0;
     
     public FnSym(Type type, int numparams) {
         super(new FnType());
@@ -49,6 +71,18 @@ class FnSym extends Sym {
         return numParams;
     }
 
+    public void setSizeParams(int size) {
+        this.sizeParams = size;
+    }
+    public void setSizeLocals(int size) {
+        this.sizeLocals = size;
+    }
+    public int getSizeParams() {
+        return this.sizeParams;
+    }
+    public int getSizeLocals() {
+        return this.sizeLocals;
+    }
     public List<Type> getParamTypes() {
         return paramTypes;
     }
@@ -57,6 +91,7 @@ class FnSym extends Sym {
         // make list of formals
         String str = "";
         boolean notfirst = false;
+        str += String.format("[%d, %d], ", this.sizeParams, this.sizeLocals);
         for (Type type : paramTypes) {
             if (notfirst)
                 str += ",";

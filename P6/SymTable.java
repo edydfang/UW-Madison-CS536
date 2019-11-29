@@ -68,4 +68,8 @@ public class SymTable {
         }
         System.out.println();
     }
+
+    public int getNumScope() {
+        return this.list.size();
+    }
 }
