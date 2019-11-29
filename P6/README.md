@@ -1,8 +1,8 @@
-# Assambly Code Generator for the Cflat Compiler
+# Assembly Code Generator for the Cflat Compiler
 
 Yidong Fang
 
-In this project, a MIPS Assambly generator is implemented for the Cflat language.
+In this project, a MIPS assembly generator is implemented for the Cflat language.
 The final generator mainly support `int`, `bool` and `stringLit` in programs'
 memory. Also, for the control flows, it supports function call, if-else statement
 as well as while statement. Thus, in the test case a basic Fibonacci Recursive
