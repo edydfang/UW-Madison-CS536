@@ -56,7 +56,7 @@ EmptySymTableException.class: EmptySymTableException.java
 ###
 # test
 #
-test:P6.class
+test:P6.class test.cflat test.s
 	java -cp $(CP) P6 test.cflat test.s
 
 ###

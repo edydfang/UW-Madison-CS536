@@ -1,6 +1,17 @@
 
 int var1;
 
+void test_fn_void1(int param1) {
+    int count;
+    cout << "void function1\n";
+}
+
+void test_fn_void2(int param1) {
+    int count;
+    cout << "void function2\n";
+    return;
+}
+
 int test_fn(int a, bool b){
     int c;
     bool d;
@@ -10,9 +21,27 @@ int test_fn(int a, bool b){
     cout << c;
     cout << "\n";
     return 0;
-    cout << "output after return";
+    cout << "output after return\n";
     d = b;
     return 0;
+}
+
+int recursion_fn(int input){
+    if(input <= 1){
+        return input;
+    }else{
+        return recursion_fn(input-1) + recursion_fn(input-2);
+    }
+}
+
+int while_loop_addition_fn(int num) {
+    int result;
+    result = 0;
+    while(num > 0) {
+        result = result + num;
+        num --;
+    }
+    return result;
 }
 
 void main() {
@@ -21,12 +50,24 @@ void main() {
     bool b2;
     int num1;
     int num2;
-    // var2 = false;
-    // var1 = 1 + 3;
+    // var init
     var1 = -8;
     var2 = true;
     b1 = true;
+    // function test
+    test_fn_void1(1);
+    test_fn_void2(2);
     test_fn(var1, var2);
+    cout << "Fibonacci Recursion Test:\n";
+    cout << recursion_fn(0);
+    cout << "\n";
+    cout << recursion_fn(1);
+    cout << "\n";
+    cout << recursion_fn(10);
+    cout << "\n";
+    cout << while_loop_addition_fn(100);
+    cout << "\n";
+    // write test
     cout << "Hello world!";
     cout << "\n";
     cout << var1;

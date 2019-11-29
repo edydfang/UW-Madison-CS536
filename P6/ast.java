@@ -249,10 +249,10 @@ class FormalsListNode extends ASTnode {
         int curOffset = 4;
         for (FormalDeclNode node : myFormals) {
             Sym sym = node.nameAnalysis(symTab);
-            sym.setOffset(curOffset);
-            curOffset += 4;
             if (sym != null) {
                 typeList.add(sym.getType());
+                sym.setOffset(curOffset);
+                curOffset += 4;
             }
         }
         this.sizeParams = curOffset - 4;
@@ -656,11 +656,16 @@ class FnDeclNode extends DeclNode {
         Codegen.genLabel(fnEndLabel);
         // fn exit
         Codegen.p.print("\t\t#FUNCTION EXIT\n");
-        Codegen.generate("lw", "$ra", "0($fp)");
-        Codegen.generate("move", "$t0", "$fp");
-        Codegen.generate("lw", "$fp", "-4($fp)");
-        Codegen.generate("move", "$sp", "$t0");
-        Codegen.generate("jr", "$ra");
+        // load return address
+        Codegen.generateIndexed("lw", Codegen.RA, Codegen.FP, 0);
+        // FP holds the address to which we need to restore SP
+        Codegen.generate("move", Codegen.T0, Codegen.FP);
+        // restore FP
+        Codegen.generateIndexed("lw", Codegen.FP, Codegen.FP, -4);
+        // restore SP
+        Codegen.generate("move", Codegen.SP, Codegen.T0);
+        // return
+        Codegen.generate("jr", Codegen.RA);
     }
     public void unparse(PrintWriter p, int indent) {
         addIndent(p, indent);
@@ -1531,18 +1536,11 @@ class ReturnStmtNode extends StmtNode {
         }
         
     }
-    public void codeGen() {
-        if (!myExp.typeCheck().isVoidType()) {
-            myExp.codeGenExp();
-            // store the return value
-            Codegen.genPop(Codegen.V0);   
-        }
-    }
     public void codeGen(String labelFnEnd) {
-        if (!myExp.typeCheck().isVoidType()) {
+        if (myExp!=null && !myExp.typeCheck().isVoidType()) {
             myExp.codeGenExp();
-            // store the return value
-            Codegen.genPop(Codegen.V0);   
+            // store the return value into V0
+            Codegen.genPop(Codegen.V0);
         }
         Codegen.generate("b", labelFnEnd);
     }
@@ -2182,12 +2180,18 @@ class CallExpNode extends ExpNode {
             jumpLabel = "main";
         }
         Codegen.generate("jal", jumpLabel);
+        // reset the sp to remove the params
+        Codegen.generate("add", Codegen.SP, ((FnSym)this.myId.sym()).getSizeParams());
         // handle return value
         if(!((FnSym)this.myId.sym()).getReturnType().isVoidType()){
             // push this as the return value
             Codegen.genPush(Codegen.V0);
         }
-    }   
+    }
+    // special case for callexp
+    public void codeGenExp() {
+        this.codeGenCommon();
+    } 
     // ** unparse **
     public void unparse(PrintWriter p, int indent) {
         myId.unparse(p, 0);
