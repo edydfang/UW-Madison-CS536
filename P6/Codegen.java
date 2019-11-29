@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.HashMap;
 
 // **********************************************************************
 // The Codegen class provides constants and operations useful for code
@@ -24,6 +25,7 @@ import java.io.*;
 public class Codegen {
     // file into which generated code is written
     public static PrintWriter p = null;    
+    public static HashMap<String, String> stringMap;
 
     // values of true and false
     public static final String TRUE = "1";

@@ -26,7 +26,9 @@ public class Sym {
         }
         return unparseStr;
     }
-
+    public boolean isLocal(){
+        return this.isLocal;
+    }
     public int getOffset() {
         return offset;
     }
