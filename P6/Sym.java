@@ -6,8 +6,9 @@ import java.util.*;
  */
 public class Sym {
     private Type type;
-    private int offset;
-    private boolean isLocal = false;
+    private static int localInitOffset = -8;
+    // if offset is 1 then it is global var
+    private int offset = 0;
     
     public Sym(Type type) {
         this.type = type;
@@ -19,15 +20,12 @@ public class Sym {
     
     public String toString() {
         String unparseStr;
-        if (this.isLocal) {
+        if (this.offset != 1) {
             unparseStr = Integer.toString(this.offset) + ", " + type.toString();
         } else {
             unparseStr = "global, " + type.toString();
         }
         return unparseStr;
-    }
-    public boolean isLocal(){
-        return this.isLocal;
     }
     public int getOffset() {
         return offset;
@@ -36,10 +34,13 @@ public class Sym {
     public void setOffset(int offset) {
         this.offset = offset;
     }
-
-    public void setLocal() {
-        this.isLocal = true;
+    public static int getLocalInitOffset() {
+	return Sym.localInitOffset;
     }
+    public static void setLocalInitOffset(int offset) {
+	Sym.localInitOffset = offset;
+    }
+
 }
 
 /**

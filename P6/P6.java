@@ -156,10 +156,8 @@ public class P6 {
 		}
 
 		// Calling codeGen   //
-		// Codegen.p = this.outFile;
 		astRoot.codeGen(this.outFile);
 		// astRoot.unparse(this.outFile, 0);
-		// Codegen.p.close();
 
 		return P6.RESULT_CORRECT;
 	}

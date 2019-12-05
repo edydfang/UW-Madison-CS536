@@ -327,6 +327,217 @@ _while_loop_addition_fn:	# FUNCTION ENTRY
 	move  $sp, $t0
 	jr    $ra
 	.text
+_test_local_in_if:	# FUNCTION ENTRY
+	sw    $ra, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	sw    $fp, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	addu  $fp, $sp, 8
+	subu  $sp, $sp, 24
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -12($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($fp)
+	beq   $t0, 0, .L18
+	b     .L17
+.L17:
+	li    $t0, 4
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -20($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 8
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -24($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -12($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	add   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -20($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	add   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -24($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	add   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -16($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	b     .L19
+.L18:
+	li    $t0, 4
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -20($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -12($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	add   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -20($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	add   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -16($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+.L19:
+.L20:
+	lw    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 0
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sgt   $t0, $t0, $t1
+	beq   $t0, 0, .L22
+	b     .L21
+.L21:
+	lw    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -28($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sub   $t0, $t0, 1
+	sw    $t0, 0($t1)
+	b     .L20
+.L22:
+	lw    $t0, -16($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $v0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	b     .L16
+.L16:
+		#FUNCTION EXIT
+	lw    $ra, 0($fp)
+	move  $t0, $fp
+	lw    $fp, -4($fp)
+	move  $sp, $t0
+	jr    $ra
+	.text
 	.globl main
 main:	# FUNCTION ENTRY
 	sw    $ra, 0($sp)	#PUSH
@@ -402,9 +613,9 @@ main:	# FUNCTION ENTRY
 	sw    $v0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	.data
-.L17:	.asciiz "Fibonacci Recursion Test:\n"
+.L24:	.asciiz "Fibonacci Recursion Test:\n"
 	.text
-	la    $t0, .L17
+	la    $t0, .L24
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
@@ -492,10 +703,50 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 4
 	syscall
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	jal   _test_local_in_if
+	add   $sp, 4
+	sw    $v0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 0
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	jal   _test_local_in_if
+	add   $sp, 4
+	sw    $v0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
 	.data
-.L18:	.asciiz "Hello world!"
+.L25:	.asciiz "Hello world!"
 	.text
-	la    $t0, .L18
+	la    $t0, .L25
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
@@ -727,69 +978,6 @@ main:	# FUNCTION ENTRY
 	li    $v0, 4
 	syscall
 	li    $t0, 1
-	b     .L19
-.L19:
-	li    $t0, 0
-.L20:
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	.data
-.L21:	.asciiz " "
-	.text
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 1
-	b     .L22
-.L22:
-	li    $t0, 1
-.L23:
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 1
-	b     .L25
-.L24:
-	li    $t0, 0
-.L25:
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 0
 	b     .L26
 .L26:
 	li    $t0, 0
@@ -801,385 +989,10 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 1
 	syscall
-	la    $t0, .L6
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	slt   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	slt   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sgt   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sgt   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sle   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sle   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sle   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sge   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sge   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sge   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	seq   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	seq   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sne   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L21
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	li    $t0, 2
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sne   $t0, $t0, $t1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 1
-	syscall
-	la    $t0, .L6
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	li    $t0, 1
-	b     .L28
-.L28:
 	.data
-.L30:	.asciiz "branch test 01"
+.L28:	.asciiz " "
 	.text
-	la    $t0, .L30
+	la    $t0, .L28
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
@@ -1187,90 +1000,437 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 4
 	syscall
-	la    $t0, .L6
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
+	li    $t0, 1
+	b     .L29
 .L29:
-	li    $t0, 0
+	li    $t0, 1
+.L30:
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 1
 	b     .L32
 .L31:
-	.data
-.L33:	.asciiz "branch test 01 failed"
-	.text
-	la    $t0, .L33
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	la    $t0, .L6
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-.L32:
-	li    $t0, 1
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	la    $t0, -8($fp)
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t1, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	sw    $t0, 0($t1)
-	beq   $t0, 0, .L35
-	b     .L34
-.L34:
-	.data
-.L36:	.asciiz "branch test 02"
-	.text
-	la    $t0, .L36
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	la    $t0, .L6
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-.L35:
 	li    $t0, 0
+.L32:
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
-	la    $t0, -8($fp)
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 0
+	b     .L33
+.L33:
+	li    $t0, 0
+.L34:
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t1, 4($sp)	#POP
 	addu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
 	addu  $sp, $sp, 4
-	sw    $t0, 0($t1)
-	beq   $t0, 0, .L38
-	b     .L37
-.L37:
+	slt   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	slt   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sgt   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sgt   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sle   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sle   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sle   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sge   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sge   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sge   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	seq   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	seq   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sne   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L28
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	li    $t0, 2
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sne   $t0, $t0, $t1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 1
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	li    $t0, 1
+	b     .L35
+.L35:
 	.data
-.L39:	.asciiz "branch test 02 failed"
+.L37:	.asciiz "branch test 01"
 	.text
-	la    $t0, .L39
+	la    $t0, .L37
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
@@ -1286,12 +1446,46 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 4
 	syscall
+.L36:
+	li    $t0, 0
+	b     .L39
 .L38:
-	li    $t0, 1
-	b     .L40
-.L40:
 	.data
-.L43:	.asciiz "branch test 03"
+.L40:	.asciiz "branch test 01 failed"
+	.text
+	la    $t0, .L40
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+.L39:
+	li    $t0, 1
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	beq   $t0, 0, .L42
+	b     .L41
+.L41:
+	.data
+.L43:	.asciiz "branch test 02"
 	.text
 	la    $t0, .L43
 	sw    $t0, 0($sp)	#PUSH
@@ -1309,56 +1503,48 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 4
 	syscall
-	b     .L42
-.L41:
-	.data
-.L44:	.asciiz "branch test 03 failed"
-	.text
-	la    $t0, .L44
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	la    $t0, .L6
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
 .L42:
 	li    $t0, 0
-	b     .L46
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	la    $t0, -8($fp)
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t1, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	sw    $t0, 0($t1)
+	beq   $t0, 0, .L45
+	b     .L44
+.L44:
+	.data
+.L46:	.asciiz "branch test 02 failed"
+	.text
+	la    $t0, .L46
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
 .L45:
-	.data
-.L48:	.asciiz "branch test 04 failed"
-	.text
-	la    $t0, .L48
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
-	la    $t0, .L6
-	sw    $t0, 0($sp)	#PUSH
-	subu  $sp, $sp, 4
-	lw    $t0, 4($sp)	#POP
-	addu  $sp, $sp, 4
-	move  $a0, $t0
-	li    $v0, 4
-	syscall
+	li    $t0, 1
 	b     .L47
-.L46:
+.L47:
 	.data
-.L49:	.asciiz "branch test 04"
+.L50:	.asciiz "branch test 03"
 	.text
-	la    $t0, .L49
+	la    $t0, .L50
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
@@ -1374,7 +1560,72 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 4
 	syscall
-.L47:
+	b     .L49
+.L48:
+	.data
+.L51:	.asciiz "branch test 03 failed"
+	.text
+	la    $t0, .L51
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+.L49:
+	li    $t0, 0
+	b     .L53
+.L52:
+	.data
+.L55:	.asciiz "branch test 04 failed"
+	.text
+	la    $t0, .L55
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	b     .L54
+.L53:
+	.data
+.L56:	.asciiz "branch test 04"
+	.text
+	la    $t0, .L56
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+	la    $t0, .L6
+	sw    $t0, 0($sp)	#PUSH
+	subu  $sp, $sp, 4
+	lw    $t0, 4($sp)	#POP
+	addu  $sp, $sp, 4
+	move  $a0, $t0
+	li    $v0, 4
+	syscall
+.L54:
 	li    $t0, 0
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
@@ -1388,7 +1639,7 @@ main:	# FUNCTION ENTRY
 	sw    $t0, 0($t1)
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
-.L50:
+.L57:
 	lw    $t0, -20($fp)
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
@@ -1400,9 +1651,9 @@ main:	# FUNCTION ENTRY
 	lw    $t0, 4($sp)	#POP
 	addu  $sp, $sp, 4
 	slt   $t0, $t0, $t1
-	beq   $t0, 0, .L52
-	b     .L51
-.L51:
+	beq   $t0, 0, .L59
+	b     .L58
+.L58:
 	lw    $t0, -20($fp)
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
@@ -1423,8 +1674,8 @@ main:	# FUNCTION ENTRY
 	addu  $sp, $sp, 4
 	add   $t0, $t0, 1
 	sw    $t0, 0($t1)
-	b     .L50
-.L52:
+	b     .L57
+.L59:
 	la    $t0, .L6
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
@@ -1434,12 +1685,12 @@ main:	# FUNCTION ENTRY
 	li    $v0, 4
 	syscall
 	.data
-.L53:	.asciiz "yidong"
+.L60:	.asciiz "yidong"
 	.text
-	la    $t0, .L53
+	la    $t0, .L60
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
-	la    $t0, .L53
+	la    $t0, .L60
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t1, 4($sp)	#POP
@@ -1454,13 +1705,13 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 1
 	syscall
-	la    $t0, .L53
+	la    $t0, .L60
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	.data
-.L54:	.asciiz "yidong2"
+.L61:	.asciiz "yidong2"
 	.text
-	la    $t0, .L54
+	la    $t0, .L61
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t1, 4($sp)	#POP
@@ -1475,10 +1726,10 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 1
 	syscall
-	la    $t0, .L53
+	la    $t0, .L60
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
-	la    $t0, .L54
+	la    $t0, .L61
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t1, 4($sp)	#POP
@@ -1493,10 +1744,10 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 1
 	syscall
-	la    $t0, .L53
+	la    $t0, .L60
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
-	la    $t0, .L53
+	la    $t0, .L60
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t1, 4($sp)	#POP
@@ -1520,8 +1771,8 @@ main:	# FUNCTION ENTRY
 	li    $v0, 4
 	syscall
 	li    $t0, 1
-	b     .L56
-.L55:
+	b     .L63
+.L62:
 	li    $t0, 0
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
@@ -1533,7 +1784,7 @@ main:	# FUNCTION ENTRY
 	lw    $t0, 4($sp)	#POP
 	addu  $sp, $sp, 4
 	sw    $t0, 0($t1)
-.L56:
+.L63:
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
@@ -1552,9 +1803,9 @@ main:	# FUNCTION ENTRY
 	lw    $t0, 4($sp)	#POP
 	addu  $sp, $sp, 4
 	seq   $t0, $t0, $t1
-	beq   $t0, 0, .L58
-	b     .L57
-.L57:
+	beq   $t0, 0, .L65
+	b     .L64
+.L64:
 	li    $t0, 0
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
@@ -1566,7 +1817,7 @@ main:	# FUNCTION ENTRY
 	lw    $t0, 4($sp)	#POP
 	addu  $sp, $sp, 4
 	sw    $t0, 0($t1)
-.L58:
+.L65:
 	sw    $t0, 0($sp)	#PUSH
 	subu  $sp, $sp, 4
 	lw    $t0, 4($sp)	#POP
@@ -1639,7 +1890,7 @@ main:	# FUNCTION ENTRY
 	move  $a0, $t0
 	li    $v0, 4
 	syscall
-.L16:
+.L23:
 		#FUNCTION EXIT
 	lw    $ra, 0($fp)
 	move  $t0, $fp

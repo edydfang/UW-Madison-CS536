@@ -44,6 +44,31 @@ int while_loop_addition_fn(int num) {
     return result;
 }
 
+int test_local_in_if(bool branch) {
+    int a;
+    int b;
+    int result;
+    a = 1;
+    b = 2;
+    if (branch) {
+        int c;
+        int d;
+        c = 4;
+        d = 8;
+        result = a+b+c+d;
+    } else {
+        int c;
+        c = 4;
+        result = a+b+c;
+    }
+    while(a>0) {
+        int c;
+        c = a;
+        a --;
+    }
+    return result;
+}
+
 void main() {
     bool var2;
     bool b1;
@@ -66,6 +91,10 @@ void main() {
     cout << recursion_fn(10);
     cout << "\n";
     cout << while_loop_addition_fn(100);
+    cout << "\n";
+    cout << test_local_in_if(true);
+    cout << "\n";
+    cout << test_local_in_if(false);
     cout << "\n";
     // write test
     cout << "Hello world!";

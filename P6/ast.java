@@ -134,6 +134,8 @@ class ProgramNode extends ASTnode {
      */
     public void nameAnalysis() {
         SymTable symTab = new SymTable();
+        // special offset to know this is global var
+        Sym.setLocalInitOffset(1);
         myDeclList.nameAnalysis(symTab);
         // check whether there is a main function
         Sym mainSym = symTab.lookupLocal("main");
@@ -183,21 +185,21 @@ class DeclListNode extends ASTnode {
      * decls in the list.
      */    
     public void nameAnalysis(SymTable symTab, SymTable globalTab) {
-        int curOffset = -8;
+        int curOffset = Sym.getLocalInitOffset();
         for (DeclNode node : myDecls) {
             if (node instanceof VarDeclNode) {
                 ((VarDeclNode)node).nameAnalysis(symTab, globalTab);
                 ((VarDeclNode)node).getSym().setOffset(curOffset);
-                curOffset -= 4;
+                if (curOffset != 1) {
+                    // only when it is in a function
+                    curOffset -= 4;
+                }
             } else {
                 node.nameAnalysis(symTab);
             }
         }
-        this.sizeLocals = (curOffset + 8) * (-1);
-    }    
-    public int getSizeLocals() {
-        return this.sizeLocals;
-    }
+        Sym.setLocalInitOffset(curOffset);
+    }   
     /**
      * typeCheck
      */
@@ -228,7 +230,6 @@ class DeclListNode extends ASTnode {
 
     // list of kids (DeclNodes)
     private List<DeclNode> myDecls;
-    private int sizeLocals;
 }
 
 class FormalsListNode extends ASTnode {
@@ -298,11 +299,14 @@ class FnBodyNode extends ASTnode {
      * - process the statement list
      */
     public void nameAnalysis(SymTable symTab) {
+        Sym.setLocalInitOffset(-8);
         myDeclList.nameAnalysis(symTab);
         myStmtList.nameAnalysis(symTab);
+        int curOffset = Sym.getLocalInitOffset();
+        this.sizeLocals = (curOffset + 8) * (-1);
     }    
     public int getSizeLocals() {
-        return myDeclList.getSizeLocals();
+        return this.sizeLocals;
     }
     /**
      * typeCheck
@@ -321,6 +325,7 @@ class FnBodyNode extends ASTnode {
     // 2 kids
     private DeclListNode myDeclList;
     private StmtListNode myStmtList;
+    private int sizeLocals;
 }
 
 class StmtListNode extends ASTnode {
@@ -512,10 +517,6 @@ class VarDeclNode extends DeclNode {
                 else {
                     sym = new Sym(myType.type());
                 }
-                // check local or not; global by default
-                if(symTab.getNumScope() > 1){
-                    sym.setLocal();
-                }
                 symTab.addDecl(name, sym);
                 myId.link(sym);
             } catch (DuplicateSymException ex) {
@@ -536,7 +537,10 @@ class VarDeclNode extends DeclNode {
         return sym;
     }    
     public void codeGen() {
-        Codegen.p.print(Codegen.addGlobalVar(this.myId.name()));
+        if (this.myId.sym().getOffset() == 1) {
+            // only when it is global var
+            Codegen.p.print(Codegen.addGlobalVar(this.myId.name()));
+        }
     }
     public void unparse(PrintWriter p, int indent) {
         addIndent(p, indent);
@@ -720,7 +724,6 @@ class FormalDeclNode extends DeclNode {
         if (!badDecl) {  // insert into symbol table
             try {
                 sym = new Sym(myType.type());
-                sym.setLocal();
                 symTab.addDecl(name, sym);
                 myId.link(sym);
             } catch (DuplicateSymException ex) {
@@ -1257,8 +1260,10 @@ class IfElseStmtNode extends StmtNode {
     public void nameAnalysis(SymTable symTab) {
         myExp.nameAnalysis(symTab);
         symTab.addScope();
+        int entryOffset = Sym.getLocalInitOffset();
         myThenDeclList.nameAnalysis(symTab);
         myThenStmtList.nameAnalysis(symTab);
+        int exitOffset1 = Sym.getLocalInitOffset();
         try {
             symTab.removeScope();
         } catch (EmptySymTableException ex) {
@@ -1267,8 +1272,12 @@ class IfElseStmtNode extends StmtNode {
             System.exit(-1);        
         }
         symTab.addScope();
+        Sym.setLocalInitOffset(entryOffset);
         myElseDeclList.nameAnalysis(symTab);
         myElseStmtList.nameAnalysis(symTab);
+        int exitOffset2 = Sym.getLocalInitOffset();
+        int exitOffset = exitOffset1 < exitOffset2 ? exitOffset1:exitOffset2;
+        Sym.setLocalInitOffset(exitOffset);
         try {
             symTab.removeScope();
         } catch (EmptySymTableException ex) {
@@ -1826,7 +1835,7 @@ class IdNode extends ExpNode {
     }
 
     private void codeGenLoad(String command) {
-        if(mySym.isLocal()) {
+        if(mySym.getOffset() != 1) {
             Codegen.generateIndexed(command, Codegen.T0, Codegen.FP, this.mySym.getOffset());
         } else {
             Codegen.generate(command, Codegen.T0, "_" + myStrVal);
